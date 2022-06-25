@@ -1,0 +1,45 @@
+#+TITLE: share-directory
+#+AUTHOR: Guillaume LE VAILLANT
+#+DATE: 2022-06-25
+#+EMAIL: glv@posteo.net
+#+LANGUAGE: en
+#+OPTIONS: num:nil toc:nil html-postamble:nil html-scripts:nil
+#+HTML_DOCTYPE: html5
+
+* Description
+
+*share-directory* is a little web server written in Common Lisp that can be
+used to share the files in a directory.
+
+* License
+
+*share-directory* is released under the GPL-3 license or later. See the
+[[file:LICENSE][LICENSE]] file for details.
+
+* Dependencies
+
+*share-directory* requires:
+ - [[http://sbcl.org/][sbcl]]
+ - [[https://edicl.github.io/cl-who/][cl-who]]
+ - [[https://edicl.github.io/hunchentoot/][hunchentoot]]
+
+The cl-who and hunchentoot dependencies can be installed easily using
+[[https://www.quicklisp.org][quicklisp]].
+
+* Build
+
+If you are using GNU Guix, you can use the manifest file to prepare the build
+environment wih the required dependencies and compile the program.
+
+#+BEGIN_EXAMPLE
+guix shell -C -m manifest.scm -- make
+#+END_EXAMPLE
+
+Otherwise, after putting the cl-who and hunchentoot libraries in a directory
+where the Common Lisp system can see them, the program can be built by using
+the Makefile.
+
+#+BEGIN_EXAMPLE
+make
+./share-directory path-to-directory port-number
+#+END_EXAMPLE
