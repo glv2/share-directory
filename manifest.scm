@@ -4,18 +4,7 @@
 (specifications->manifest
  '(;; Compiler and tools
    "sbcl"
-   ;; "coreutils"
-   ;; "diffutils"
-   ;; "findutils"
-   ;; "gawk"
-   ;; "gcc-toolchain"
-   ;; "git"
-   ;; "grep"
-   ;; "libtool"
-   ;; "lzip"
    "make"
-   ;; "sed"
-   ;; "tar"
 
    ;; Libraries
    "sbcl-cl-who"
