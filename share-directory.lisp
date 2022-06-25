@@ -20,7 +20,9 @@
   (:use :cl)
   (:import-from :cl-who
                 #:escape-string
+                #:htm
                 #:html-mode
+                #:str
                 #:with-html-output-to-string)
   (:import-from :hunchentoot
                 #:*dispatch-table*
@@ -56,21 +58,21 @@
   (concatenate 'string "/d/" (url-encode name)))
 
 (defun make-default-page (file-list)
-  (let* ((file-list (mapcar (lambda (file)
-                              `(:li
-                                (:a
-                                 :href ,(escape-string (file-name-to-url file))
-                                 ,(escape-string file))))
-                            file-list))
-         (body `((:h1 "Haveblaj dosieroj")
-                 (:p
-                  (:ul
-                   ,@file-list))))
-         (page `(with-html-output-to-string (str nil :prologue t :indent t)
-                  (:html
-                   (:head (:title "Publika"))
-                   (:body ,@body))))
-         (html (eval page)))
+  (let ((html (with-html-output-to-string (str nil :prologue t)
+                (:html
+                 (:head
+                  (:title "Publika"))
+                 (:body
+                  (:h1 "Haveblaj dosieroj")
+                  (:p
+                   (:ul
+                    (mapc (lambda (file)
+                            (htm
+                             (:li
+                              (:a
+                               :href (escape-string (file-name-to-url file))
+                               (str (escape-string file))))))
+                          file-list))))))))
     (lambda ()
       html)))
 
