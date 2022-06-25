@@ -38,7 +38,7 @@
 (in-package :share-directory)
 
 
-(defvar *webserver* nil)
+(defvar *web-server* nil)
 
 (defun create-file-list (directory)
   (let* ((directories (uiop:while-collecting (collect)
@@ -83,16 +83,16 @@
           (create-prefix-dispatcher "/" default-page))))
 
 (defun start (directory &optional (port 80))
-  "Start the webserver to share the files in DIRECTORY and listen on PORT."
+  "Start the web server to share the files in DIRECTORY and listen on PORT."
   (setf (html-mode) :html5)
   (setf *dispatch-table* (create-dispatch-table directory))
-  (setf *webserver* (make-instance 'easy-acceptor :port port))
-  (hunchentoot:start *webserver*))
+  (setf *web-server* (make-instance 'easy-acceptor :port port))
+  (hunchentoot:start *web-server*))
 
 (defun stop ()
-  "Stop the webserver."
-  (hunchentoot:stop *webserver*)
-  (setf *webserver* nil)
+  "Stop the web server."
+  (hunchentoot:stop *web-server*)
+  (setf *web-server* nil)
   (setf *dispatch-table* nil))
 
 (defun main (&optional (args (uiop:command-line-arguments)))

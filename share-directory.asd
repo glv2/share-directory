@@ -25,7 +25,7 @@
 (defsystem "share-directory"
   :name "share-directory"
   :version "1.0"
-  :description "Small webserver to share the files in a directory"
+  :description "Small web server to share the files in a directory"
   :author "Guillaume Le Vaillant"
   :license "GPL-3"
   :depends-on ("cl-who" "hunchentoot")
