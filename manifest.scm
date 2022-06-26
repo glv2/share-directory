@@ -3,8 +3,9 @@
 
 (specifications->manifest
  '(;; Compiler and tools
-   "sbcl"
+   "coreutils"
    "make"
+   "sbcl"
 
    ;; Libraries
    "sbcl-cl-who"
