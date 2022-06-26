@@ -110,6 +110,8 @@
     (setf *log-lisp-backtraces-p* nil)
     (unwind-protect
          (progn
+           (write-line "Quit with Ctrl-D on a empty line.")
+           (finish-output)
            (if port
                (start (truename directory) port)
                (start (truename directory)))
