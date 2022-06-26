@@ -29,7 +29,7 @@ The cl-who and hunchentoot dependencies can be installed easily using
 * Build
 
 If you are using GNU Guix, you can use the manifest file to prepare the build
-environment wih the required dependencies and compile the program.
+environment with the required dependencies and compile the program.
 
 #+BEGIN_EXAMPLE
 guix shell -C -m manifest.scm -- make
